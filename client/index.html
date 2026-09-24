@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#06060b" />
+    <meta name="color-scheme" content="dark light" />
+    <script>
+      // Apply saved theme before first paint (prevents a flash). Default = dark.
+      (function () {
+        try {
+          var t = localStorage.getItem('zv_theme') || 'dark';
+          var dark = t === 'dark' || (t === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          document.documentElement.className = dark ? 'dark' : 'light';
+          if (!dark) document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f6f7fb');
+        } catch (e) {}
+      })();
+    </script>
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/brand/zeviro-icon-32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta property="og:image" content="https://zeviro.agency/og-image.png" />
+    <meta property="og:site_name" content="Zeviro" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+    <title>Zeviro — Web Development, B2B Leads & Data Services</title>
+    <meta name="description" content="Zeviro is a web development, B2B lead generation and data entry agency with 1,200+ completed projects and a 4.8★ Fiverr rating. Order online and track everything in your client portal." />
+  </head>
+  <body class="bg-ink-950 text-slate-200 antialiased">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

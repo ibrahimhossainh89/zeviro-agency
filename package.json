@@ -1,0 +1,22 @@
+{
+  "name": "zeviro-agency",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Zeviro.agency \u2014 public website, Admin Dashboard/CRM and Client Portal (MERN)",
+  "scripts": {
+    "install:all": "npm install --prefix server && npm install --prefix client",
+    "dev": "concurrently -n api,web -c magenta,cyan \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "seed": "npm run seed --prefix server",
+    "seed:real": "npm run seed:real --prefix server",
+    "build": "npm run build --prefix client",
+    "start": "cd server && NODE_ENV=production node src/index.js",
+    "deploy": "npm run install:all && npm run build && pm2 startOrReload deploy/ecosystem.config.cjs",
+    "render-build": "npm install --prefix server && npm install --prefix client --include=dev && npm run build --prefix client"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
